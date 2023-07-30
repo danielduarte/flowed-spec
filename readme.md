@@ -43,9 +43,7 @@ All the `string` values and object keys in a Flowed document are case-sensitive.
 
 Root object of the Flowed document.
 
-:warning: define Map, Array, string
-
-Fields
+**Fields**
 
 | Name      | Type                      | Required | Description                                                                                                                                                                                                                                                                                                                    |
 |-----------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -58,6 +56,8 @@ Fields
 Task definition specification.
 A task definition object represents a unit of execution in the flow context that can be run 0, 1 or more times, depending on the flow definition, the execution parameters, and each particular execution evolution.
 The predictability of execution (or non-execution) of each task depends on how the entire flow is defined.
+
+**Fields**
 
 | Name            | Type                      | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 |-----------------|---------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -94,11 +94,14 @@ Object with options to configure parameters of execution for the flow.
 They are not intended to be modified between different executions, since they are considered part of the flow specification.
 Implementations of this specification like [the official](https://github.com/danielduarte/flowed) one, can support additional execution parameters to control details of individual executions for the same flow.
 
+**Fields**
+
 | Name                           | Type      | Required | Description                                                                                                                                                                                                 |
 |--------------------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `throwErrorOnUnsolvableResult` | `boolean` | No       | Indicates if an error must be thrown when a task does not provide some of the results declared in its `provides` list. When such errors are thrown, the flow execution is interrupted. Defaults to `false`. |
 | `resolverAutomapParams`        | `boolean` | No       | Indicates if input parameters passed to the resolver should be mapped automatically to the value names in the `requires` list. Defaults to `false`.                                                         |
 | `resolverAutomapResults`       | `boolean` | No       | Indicates if input results given by the resolver should be mapped automatically to the value names in the `provides` list. Defaults to `false`.                                                             |
+
 
 #### AnyValue
 
@@ -107,6 +110,8 @@ It should be taking into account that, even when any reference-able ECMAScript v
 
 
 #### TaskResolverSpec
+
+**Fields**
 
 | Name      | Type             | Required | Description                                                                                                                                                    |
 |-----------|------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -129,6 +134,8 @@ A map with of the form `Map<Identifier, ParamValueSpec>`.
 The `Identifier`s used as keys should match the keys of the object taken as parameter by the resolver.
 The values in the map specify how the parameter values are generated to be passed to the resolver.
 
+**Fields**
+
 | Name                      | Type             | Required | Description                                                                                         |
 |---------------------------|------------------|----------|-----------------------------------------------------------------------------------------------------|
 | {paramName}: `Identifier` | `ParamValueSpec` | No       | The specifications of the value or transformation to be mapped to the "`paramName`" task parameter. |
@@ -148,6 +155,8 @@ One of:
 A map with of the form `Map<Identifier, AnyValue>`.
 The `Identifier`s used as keys should match the keys of the object returned as result by the resolver.
 The values in the map specify how the result values are passed to the flow as flow values.
+
+**Fields**
 
 | Name                      | Type         | Required | Description                                                                                        |
 |---------------------------|--------------|----------|----------------------------------------------------------------------------------------------------|
